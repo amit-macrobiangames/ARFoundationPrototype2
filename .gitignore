@@ -72,32 +72,3 @@ crashlytics-build.properties
 
 #Project Version File
 /ProjectSettings/ProjectVersion.txt
-
-#Trailer
-/Assets/Trailer/*.*
-
-#To Upload Project
-#'/Assets/GAMEWISH_ANIMATION/32 Tutorial/'
-#/Assets/PBR_Temple/
-#/Assets/_Corals2/
-#/Assets/PrefabsDungeon/
-#'/Assets/Futuristic Weapon Pack/'
-#/Assets/Unimodels_Cemetery_Vol_1
-#/Assets/Pirate/
-#'/Assets/Fruit_Vol2 PBR/'
-#/Assets/Egypt/
-#/Assets/ShipShootingGame/
-#'/Assets/Spooky Pumpkins'
-#/Assets/Soccer/
-#/Assets/Yagnesh/
-#/Assets/Fruits/
-#/Assets/_UI/
-#/Assets/Luxury/
-#/Assets/_Shader/
-#/Assets/UltimateFantasyPirateShips/
-#/Assets/Text3D/
-#/Assets/Halloween/
-#/Assets/Jungle/
-#/Assets/_DA/
-#/Assets/EpicVictoryEffects/
-#/Assets/_Prefabs/
