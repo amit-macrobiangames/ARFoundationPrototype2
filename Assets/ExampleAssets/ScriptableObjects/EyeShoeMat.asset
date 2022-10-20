@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f8f83a5e371f0b4a9faf5dc511c5a50, type: 3}
+  m_Name: EyeShoeMat
+  m_EditorClassIdentifier: 
+  listEyeMat:
+  - {fileID: 2100000, guid: f29e5416d577c994fa43e73a64daf441, type: 2}
+  - {fileID: 2100000, guid: 111407b9171a1c8429d3c024ada259e2, type: 2}
+  - {fileID: 2100000, guid: 6ce9ac74ce390f9408db47449fdfa83d, type: 2}
+  listShoeMat:
+  - {fileID: 2100000, guid: 8406e3fd2a21e5d4392186094e160d76, type: 2}
+  - {fileID: 2100000, guid: 28d601dbd2526aa4ea9d7d2d68a05ed2, type: 2}
+  - {fileID: 2100000, guid: 66fd20a9f828eb244a5fb78a2e48a68b, type: 2}
