@@ -6,15 +6,16 @@ using TMPro;
 
 public class ARView : MonoBehaviour
 {
-    public ARCursor aRCursor = null;
+    public ARController aRController = null;
     public EyeAndShoeColor matEyeAndShoe = null;
     public Button btnEye = null;
     public Button btnShoe = null;
     public TextMeshProUGUI txtDistance = null;
     public float fltZDistance = 0;
+    private Vector3 camPos = new Vector3();
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -23,15 +24,15 @@ public class ARView : MonoBehaviour
     }
     public void ChangeEyeAndShoesColor(int i)
     {
-        if (aRCursor.isInstantiated)
+        if (aRController.isInstantiated)
         {
             if (i == 0)
             {
-                ChangeEyeColor(aRCursor.clone);
+                ChangeEyeColor(aRController.clone);
             }
             else if (i == 1)
             {
-                ChangeShoeColor(aRCursor.clone);
+                ChangeShoeColor(aRController.clone);
             }
         }
     }
@@ -49,14 +50,21 @@ public class ARView : MonoBehaviour
     }
     public void UpdateDistance(Transform obj)
     {
-        fltZDistance = Vector3.Distance(Camera.main.transform.position, obj.position);
-        Debug.Log(fltZDistance);
-        txtDistance.text = fltZDistance.ToString();
-        Vector3 newPos = Camera.main.transform.position;
+        camPos = Camera.main.transform.position;
 
+
+        //Vector3 differenceDirection = Vector3.forward;
+        //fltYDistance = Vector3.Dot(differenceDirection,
+        //        camPos - obj.position);
+        //if(fltYDistance < 0)
+        //{
+        //    fltYDistance = fltYDistance * (-1);
+        //}
+        fltZDistance = Vector3.Distance(new Vector3(camPos.x , obj.position.y, camPos.z), obj.position);
+        txtDistance.text = fltZDistance.ToString();
         if (fltZDistance >= 1.5f)
         {
-            obj.position = Vector3.MoveTowards(obj.position, new Vector3(newPos.x, obj.position.y, newPos.z), 1f * Time.deltaTime);
+            obj.position = Vector3.MoveTowards(obj.position, new Vector3(camPos.x, obj.position.y, camPos.z), 1f * Time.deltaTime);
         }
     }
 }

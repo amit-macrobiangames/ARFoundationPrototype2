@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-public class ARCursor : MonoBehaviour
+public class ARController : MonoBehaviour
 {
     public ARPlaneManager planeManager = null;
     public ARView aRView = null;
