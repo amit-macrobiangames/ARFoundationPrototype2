@@ -24,6 +24,8 @@ namespace ARFoundation.Prototype.Controller
         #endregion
 
         #region --------- MONOBEHAVIOUR METHODS  ---------
+
+        // Cloning Character After Detecting Touch on Rendered Plane
         private void Update()
         {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -36,13 +38,13 @@ namespace ARFoundation.Prototype.Controller
                     {
                         isInstantiated = true;
                         clone = Instantiate(objectToPlace, hits[0].pose.position, hits[0].pose.rotation);
-                        aRView.GirlAnimator = clone.GetComponent<Animator>();
                         clone.transform.LookAt(new Vector3(trCam.position.x, clone.transform.position.y, trCam.transform.position.z));
                         aRView.UpdateDistance(clone.transform);
                     }
                 }
             }
         }
+        // Handling Distance And Character Rotation On Movement
         private void LateUpdate()
         {
             if (isInstantiated)
@@ -56,7 +58,7 @@ namespace ARFoundation.Prototype.Controller
             }
         }
         #endregion
-        #region --------- PUBLIC PROPERTIES ---------
+        #region --------- PUBLIC METHODS ---------
 
         public void ChangeEyeColor(int index)
         {

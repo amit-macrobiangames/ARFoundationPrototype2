@@ -19,8 +19,6 @@ namespace ARFoundation.Prototype.View
         [SerializeField] private Button btnEye = null;
         [SerializeField] private Button btnShoe = null;
         [SerializeField] private TextMeshProUGUI txtDistance = null;
-        [SerializeField] private string strIdleAnimClip = "";
-        [SerializeField] private string strWalkAnimClip = "";
         [SerializeField] private GameObject goColorBoxEye = null;
         [SerializeField] private GameObject goColorBoxShoe = null;
 
@@ -37,7 +35,6 @@ namespace ARFoundation.Prototype.View
 
         private void Start()
         {
-
             btnEye.onClick.AddListener(() => ChangeEyeAndShoesColor(0));
             btnShoe.onClick.AddListener(() => ChangeEyeAndShoesColor(1));
         }
@@ -61,7 +58,6 @@ namespace ARFoundation.Prototype.View
                         goColorBoxShoe.SetActive(false);
                         goColorBoxEye.SetActive(true);
                     }
-                    //ChangeEyeColor(aRController.ClonedGirl);
                 }
                 else if (i == 1)
                 {
@@ -74,16 +70,17 @@ namespace ARFoundation.Prototype.View
                         goColorBoxEye.SetActive(false);
                         goColorBoxShoe.SetActive(true);
                     }
-                    //ChangeShoeColor(aRController.ClonedGirl);
                 }
             }
         }
-
+        // To Hide Color Boxes 
         private void HideBoxes()
         {
             goColorBoxEye.SetActive(false);
             goColorBoxShoe.SetActive(false);
         }
+
+        // Movement According to the Distance Between Character and Camera
         public void UpdateDistance(Transform obj)
         {
             camPos = Camera.main.transform.position;
@@ -96,33 +93,15 @@ namespace ARFoundation.Prototype.View
             }
             else
             {
-                //girlAnim.ResetTrigger("IsWalk");
-                //girlAnim.SetTrigger("IsIdle");
-                //girlAnim.CrossFade(strWalkAnimClip, 0.5f);
                 StopAllCoroutines();
-                girlAnim.Play(strIdleAnimClip);
+                obj.GetComponent<ARPlayerModel>().StayIdle();
             }
         }
         public IEnumerator StartWalk(Transform girl)
         {
             yield return new WaitForSeconds(2f);
             girl.position = Vector3.MoveTowards(girl.position, new Vector3(camPos.x, girl.position.y, camPos.z), 1f * Time.deltaTime);
-            //girlAnim.ResetTrigger("IsIdle");
-            //girlAnim.SetTrigger("IsWalk");
-            //girlAnim.CrossFade(strIdleAnimClip, 2f);
-            girlAnim.Play(strWalkAnimClip);
-
-        }
-        public Animator GirlAnimator
-        {
-            get
-            {
-                return girlAnim;
-            }
-            set
-            {
-                girlAnim = value;
-            }
+            girl.GetComponent<ARPlayerModel>().StartWalk();
         }
         public EyeAndShoeColor EyeAndShoe
         {

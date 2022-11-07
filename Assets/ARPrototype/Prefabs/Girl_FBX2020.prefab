@@ -1117,6 +1117,8 @@ MonoBehaviour:
   eyeRenderer:
   - {fileID: 7149728230820849670}
   - {fileID: 8224551685092225947}
+  strWalkAnimClip: Walk
+  strIdleAnimClip: Idle
 --- !u!1 &1408198225523714248
 GameObject:
   m_ObjectHideFlags: 0

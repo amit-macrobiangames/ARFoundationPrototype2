@@ -12,10 +12,31 @@ namespace ARFoundation.Prototype.Models
         #region --------- SERIALIZED VARIABLES ----------
         [SerializeField] private List<Renderer> shoeRenderer = null;
         [SerializeField] private List<Renderer> eyeRenderer = null;
+        [SerializeField] private string strWalkAnimClip = "";
+        [SerializeField] private string strIdleAnimClip = "";
+        #endregion
+        #region --------- NON-SERIALIZED VARIABLES -------
+        private Animator animator = null;
+        private bool isWalking = false;
         #endregion
         #endregion
 
+        #region --------- MONOBEHAVIOUR METHODS -------
+        private void OnEnable()
+        {
+            animator = GetComponent<Animator>();
+        }
+        #endregion
+
         #region --------- PUBLIC METHODS ----------
+        public void StartWalk()
+        {
+            animator.Play(strWalkAnimClip);
+        }
+        public void StayIdle() 
+        {
+            animator.Play(strIdleAnimClip);
+        }
         public void ChangeShoeColor(Material mat)
         {
             for (int i = 0; i < shoeRenderer.Count; i++)
@@ -29,6 +50,17 @@ namespace ARFoundation.Prototype.Models
             for (int i = 0; i < eyeRenderer.Count; i++)
             {
                 eyeRenderer[i].material = mat;
+            }
+        }
+        public bool IsWalking
+        {
+            get
+            {
+                return isWalking;
+            }
+            set
+            {
+                isWalking = value;
             }
         }
         #endregion
